@@ -1,0 +1,250 @@
+.index-page {
+  background-image: url('/images/2ix.jpg');
+  background-attachment: fixed;
+  /* Full height */
+  height: auto;
+  /* Center and scale the image nicely */
+  width: 100;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  padding-bottom: 80px;
+}
+
+.navbar {
+  font-family: Montserrat, sans-serif;
+  margin-bottom: 0;
+  background-color: #2d2d30;
+  border: 0;
+  font-size: 11px !important;
+  letter-spacing: 4px;
+  opacity: 0.9;
+}
+
+.jumbotron p {
+  max-width: 75%;
+  margin: 1em auto 2em;
+}
+
+.navbar+ {
+  margin-top: -20px;
+}
+
+.lang-logo {
+  display: block;
+  background: #B01302;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border: 2px solid white;
+}
+
+.lang-logo img {
+  max-width: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #cccccc;
+}
+
+.bttn {
+  font: inherit;
+  border: 1px solid #128fa5;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #55bacc;
+  color: #c8dde0;
+}
+
+.bttn:hover, .bttn:active {
+  background-color: #1165BD;
+  color: white;
+}
+
+.profile-image {
+  display: inline;
+  margin: 0 auto;
+  margin-left: -25%;
+  height: 100%;
+  width: auto;
+}
+
+.image-cropper {
+  width: 160px;
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.about-author {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.author-text {
+  width: 80%;
+  margin-left: 20px;
+}
+
+.main-header-user {
+  color: white;
+}
+
+#happytag {
+  font-size: 10vw;
+  font-weight: bold;
+  text-align: right;
+}
+
+#front-quote {
+  text-align: right;
+  font-size: 1.3em;
+}
+
+.card {
+  background-color: rgba(144, 238, 144, 0.349);
+  outline: none;
+  border-radius: 10px;
+  color: white;
+}
+
+.get-help {
+  margin-left: 68vw;
+}
+
+/**************************************
+Modal Styling
+****************************************/
+/* Add a dark gray background color to the modal header and center text */
+.modal-header, h4, .close {
+  background-color: rgb(38, 196, 224);
+  color: #fff !important;
+  text-align: center;
+  font-size: 30px;
+}
+
+.modal-header, .modal-body {
+  padding: 15px 25px;
+}
+
+
+/**************************************
+* User Archives Styling
+****************************************/
+.archive-pic {
+  max-height: 350px;
+  min-height: 300px;
+  background-image: url('/images/arch.jpg');
+  background-size: cover;
+  position: relative;
+}
+
+.archive-pic h3 {
+  color: white;
+  font-size: 10rem;
+  font-weight: bold;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/**************************************
+* Motivation Styling
+****************************************/
+.mo-top {
+  background-image: url('/images/you-got-this-lighted-signage.jpg');
+  max-height: 400px;
+  min-height: 350px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.moCard {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.moCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.moCardTxt {
+  padding: 2px 16px;
+}
+
+/* .moCard img {
+  border-radius: 5px 5px 0 0;
+  width: 250px;
+  height: 250px;
+} */
+
+/**************************************
+* About Us Styling
+****************************************/
+.about-us {
+  background-image: url('/images/fam.jpg');
+  background-attachment: fixed;
+  /* Full height */
+  height: auto;
+  /* Center and scale the image nicely */
+  width: 100;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  padding-bottom: 80px;
+}
+
+#we-are-family {
+  font-size: 10vw;
+  font-weight: bold;
+  text-align: right;
+  color: rgb(9, 175, 180);
+}
+
+.about-place {
+  background-color: #2d2d305e;
+  padding: 5px;
+  max-width: 85%;
+  margin: auto;
+  border-radius: 10px;
+}
+
+/**************************************
+* Contacts Styling
+****************************************/
+.contacts {
+  background-image: url('/images/con.jpg');
+  background-attachment: fixed;
+  /* Full height */
+  height: auto;
+  /* Center and scale the image nicely */
+  width: 100;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  padding-bottom: 80px;
+}
+
+#contacts {
+  font-size: 10vw;
+  font-weight: bold;
+  text-align: right;
+  color: rgb(9, 175, 180);
+}

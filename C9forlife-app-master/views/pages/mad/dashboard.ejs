@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include('../../includes/header.ejs') %>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/dash.css" />
+</head>
+
+<body>
+  <%- include('../../includes/nav.ejs') %>
+  <div class="dashboard-image">
+    <div class="dash-col1"></div>
+
+    <div class="dash-col2 container">
+      <h1>DASHBOARD</h1>
+      <h3>Some incredible quote here</h3>
+    </div>
+    <div class="dash-col3">
+      <h5>Stars</h5>
+      <div class="user-rank">
+        <span
+          class="fa fa-star <%= comps.length >= 1 || archs.length >= 1 || (comps.length + archs.length >=1) ? 'checked' : ''%>"></span>
+        <span
+          class="fa fa-star <%= comps.length >= 4 || archs.length >= 4 || (comps.length + archs.length >= 4) ? 'checked' : ''%>"></span>
+        <span
+          class="fa fa-star <%= comps.length >= 8 || archs.length >= 8 || (comps.length + archs.length >= 8) ? 'checked' : ''%>"></span>
+        <span
+          class="fa fa-star <%= comps.length >= 12 || archs.length >= 12 || (comps.length + archs.length >= 12) ? 'checked' : ''%>"></span>
+        <span
+          class="fa fa-star <%= comps.length >= 16 || archs.length >= 16 || (comps.length + archs.length >= 16) ? 'checked' : ''%>"></span>
+      </div>
+    </div>
+  </div>
+  <div class="main-grid-container">
+    <!--ACTIVITIES-->
+    <div class="main-grid-item container">
+      <h3 class="col-head">Activities</h3>
+      <div class="next-con container">
+        <% if (activities.length > 0) { %>
+        <% activities.forEach(a => { %>
+        <div class="bucket-item-list">
+          <div class="dash-activity-title">
+            <h5><b><%= a.activityId.title %></b></h5>
+          </div>
+          <div class="activity-body">
+            <h6><%= a.activityId.description %></h6>
+            <div class="action-btn">
+              <form action="/mad/bucket-delete-item" method="POST">
+                <input type="hidden" value="<%= a.activityId._id %>" name="activityId">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btn danger" type="submit">Remove</button>
+              </form>
+              <div class="centered">
+                <form action="/mad/create-toDo" method="POST">
+                  <input type="hidden" value="<%= a.activityId._id %>" name="activityId">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button type="submit" class="btn sss">Try</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+
+        <% } else { %>
+        <h4>No Activities in Bucket!</h4>
+        <% } %>
+      </div>
+    </div>
+    <!--TO-DO LIST-->
+    <div class="main-grid-item container">
+      <h3 class="col-head">To-do list</h3>
+      <div class="next-con container">
+        <% if (toDos.length <= 0) { %>
+        <h4>No to-do list yet!</h4>
+        <% } else { %>
+        <% toDos.forEach(toDo => { %>
+        <div class="dash-toDo-item-list">
+          <div class="dash-toDo-activity-title">
+            <h5><b><%= toDo.toDoId.title %></b></h5>
+          </div>
+          <div class="dash-toDo-body">
+            <h6><%= toDo.toDoId.description %></h6>
+            <div class="action-btn">
+              <form action="/mad/toDo-delete" method="POST">
+                <input type="hidden" value="<%= toDo.toDoId._id %>" name="toDoId">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btn sss" type="submit">Remove</button>
+              </form>
+              <div class="centered">
+                <form action="/mad/completed" method="POST">
+                  <input type="hidden" value="<%= toDo.toDoId._id %>" name="toDoId">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button type="submit" class="btn sss">Done</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+        <% } %>
+      </div>
+    </div>
+    <!--COMPLETED ACTIVITIES-->
+    <div class="main-grid-item container">
+      <h3 class="col-head">Completed</h3>
+      <div class="next-con container">
+        <% if (comps.length <= 0) { %>
+        <h4>No activity completed yet!</h4>
+        <% } else { %>
+        <% comps.forEach(comp => { %>
+        <div class="dash-completed-item-list">
+          <div class="dash-completed-activity-title">
+            <h5><b><%= comp.compId.title %></b></h5>
+          </div>
+          <div class="dash-completed-body">
+            <h6><%= comp.compId.description %></h6>
+            <div class="action-btn">
+              <form action="/mad/archive" method="POST">
+                <input type="hidden" value="<%= comp.compId._id %>" name="compId">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit" class="btn sss">Archive</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+        <% } %>
+        <br><br><br>
+        <form action="/mad/archives" method="POST">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit" class="btn btn-success">My Archives</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <%- include('../../includes/end.ejs') %>

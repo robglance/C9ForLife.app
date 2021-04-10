@@ -1,0 +1,166 @@
+.dashboard-image {
+    /* Linear-gradient to add a darken background effect to the image. This will make the text easier to read */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/lo.jpg');
+    /* Set a specific height */
+    max-height: 50vh;
+    min-height: 45vh;
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: grid;
+    grid-template-columns: 18% auto 18%;
+}
+
+.dash-col2 h1 {
+    text-align: center;
+    font-size: 8vw;
+    font-weight: bolder;
+    color: rgb(230, 158, 23);
+    margin-top: 14%;
+}
+
+.dash-col2 h3 {
+    text-align: center;
+    font-weight: bolder;
+    color: orange;
+}
+
+.dash-col3 h5 {
+    color: white;
+    margin-top: 95%;
+}
+
+.checked {
+    color: orange;
+}
+
+.main-grid-container {
+    display: grid;
+    grid-template-columns: 33.5% 33.5% 33.5%;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+
+.main-grid-item {
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: solid 2px #949494;
+    max-height: 100vh;
+    min-height: 70vh;
+    padding-bottom: 7px;
+}
+
+.dash-activity-title {
+    background-color: #1E65A7;
+    border-radius: 7px 7px 0px 0px;
+    padding: 5px;
+    color: white;
+}
+
+.activity-body {
+    padding: 5px;
+}
+
+.bucket-item-list {
+    border: solid 2px #1E65A7;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: #EEEEEE;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dash-toDo-activity-title {
+    background-color: #128fa5;
+    border-radius: 7px 7px 0px 0px;
+    padding: 5px;
+    color: white;
+}
+
+.dash-toDo-body {
+    margin-bottom: 8px;
+    padding: 5px;
+}
+
+.dash-toDo-item-list {
+    border: solid 2px #128fa5;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: #EEEEEE;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dash-completed-activity-title {
+    background-color: #25B396;
+    border-radius: 7px 7px 0px 0px;
+    padding: 5px;
+    color: white;
+}
+
+.dash-completed-body {
+    margin-bottom: 8px;
+    padding: 5px;
+}
+
+.dash-completed-item-list {
+    border: solid 2px #25B396;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: #EEEEEE;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.col-head {
+    background-color: #eeeeee;
+    text-align: center;
+    border-radius: 0px 0px 7px 7px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.next-con {
+    overflow: scroll;
+    max-height: 86vh;
+    min-height: 70vh;
+}
+
+.action-btn {
+    display: flex;
+}
+
+.action-btn>form>button {
+    color: #128fa5;
+}
+
+.sss {
+    color: #128fa5;
+}
+
+@media only screen and (max-width: 766px) {
+    .main-header-user {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 667px) {
+    .dash-col2 h1 {
+        margin-top: 30%;
+    }
+    .main-grid-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .main-grid-item {
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 574px) {
+    .main-header-user {
+        display: block;
+    }
+}

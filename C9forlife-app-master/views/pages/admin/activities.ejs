@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../../includes/header.ejs') %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/activities.css" />
+    <script src="/scripts/adminDash.js"></script>
+</head>
+
+<body>
+    <%- include('../../includes/nav.ejs') %>
+    <div class="text-center admin-activities-grid-container">
+        <div class="app-users-list-main admin-activities-grid-item animate__animated animate__backInLeft">
+            <h3><i class="fas fa-users"></i> USERS</h3>
+            <hr>
+            <div class="container app-users-list">
+                <% if (users.length > 0) { %>
+                <% users.forEach((u, index, arr) => { let uni = index + u._id %>
+                <div>
+                    <div class="user-time-info">
+                        <div>
+                            <i class="fas <%= u.role === 'admin' ? 'fa-user-cog' : 'fa-user-astronaut' %> fa-5x"></i>
+                        </div>
+                    </div>
+                    <span><%= u.name %></span>
+                    <div class="the-button">
+                        <form>
+                            <input type="hidden" value="<%= u._id %>" name="studentId" id="<%= u._id %>">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>" id="my_OldToken">
+                            <button class="btn btn-success delete-user-button" type="button"
+                                onclick="deleteUser('<%= u._id %>')">Delete</button>
+                            <!-- <button class="btn btn-success myBtn" type="button" onclick="getId(event)"><%= u.name %></button> -->
+                        </form>
+                        <form class="view-user-details <%= u._id === user._id ? 'hide' : ''%>">
+                            <input type="hidden" value="<%= u._id %>" name="studentId" id="<%= u._id %>">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>" id="myToken">
+                            <a class="btn btn-success user-detail-button" href="mailto:<%= u.email %>">Email</a>
+                            <!-- <button class="btn btn-success user-detail-button" type="button"
+                                onclick="getUserId('<%= u._id%>','<%= uni %>')">Email</button> -->
+                        </form>
+                    </div>
+
+                </div>
+                <hr style="width: 80%;">
+                <% }) %>
+                <% } else { %>
+                <h5>No student signed up yet!</h5>
+                <% } %>
+            </div>
+        </div>
+        <div class="admin-activities-grid-item animate__animated animate__backInRight">
+
+            <h3><i class="fas fa-tasks"></i> ACTIVITIES 
+                <a href="" id="plus-activity" data-toggle="modal" data-toggle="tooltip" title="Click to add new activities" data-target="#myModal">+</a></h3>
+
+            <hr>
+            <% if (acts.length > 0) { %>
+            <div class="admin-act-grid-container">
+                <% for (let activity of acts) { %>
+                <article class="admin-card-control">
+                    <header class="card_header">
+                        <h3 class="activity-title">
+                            <%= activity.title %>
+                        </h3>
+                    </header>
+                    <div>
+                        <p class="actDesc">
+                            <%= activity.description %>
+                        </p>
+                    </div>
+                    <div class="card-actions">
+                        <!-- <a href="/admin/edit-activity/<%= activity._id %>?edit=true" class="btn">Edit</a> -->
+                        <a onclick="getEditActivity('<%= activity._id %>', '<%= csrfToken %>')" class="btn">Edit</a>
+                        <form action="/admin/delete-activity" method="POST">
+                            <input type="hidden" value="<%= activity._id %>" name="activityId">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button class="btn" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </article>
+                <% } %>
+            </div>
+            <% } else { %>
+            <h1>There are no activities yet.</h1>
+            <p>Please send some activities to the admin to add them here. Thank you.</p>
+            <% } %>
+        </div><br>
+    </div>
+
+    <!-- Add Activity Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Add Activity</h4>
+                    <button type="button" class="close" id="closeModal" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="title">Name of activity</label>
+                            <input name="title" type="text" class="form-control" id="title" placeholder="Activity name">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea name="description" type="text" class="form-control" id="description"
+                                placeholder="Description"></textarea>
+                        </div>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <!-- <input type="hidden" name="userEmail" value="<%= user.email %>"> -->
+                        <button type="button" class="btn btn-success"
+                            onclick="postAddActivity('<%= csrfToken %>')">Add</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left"
+                        data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden button. Click triggered by function request -->
+    <button style="visibility: hidden;" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Add Activity</button>
+
+
+    <!-- Hidden button. Click triggered after ajax request -->
+    <button id="myModal2div" style="visibility: hidden;" class="btn btn-danger" data-toggle="modal"
+        data-target="#myModal2">Edit Activity</button>
+
+    <!-- Add Activity Modal -->
+    <div class="modal fade" id="myModal2" role="dialog"> </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <%- include('../../includes/end.ejs') %>

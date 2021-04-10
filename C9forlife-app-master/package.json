@@ -1,0 +1,48 @@
+{
+  "name": "madd-app-master",
+  "version": "1.0.0",
+  "description": "An app to help people facing trauma, ptsd, etc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "author": "Kwaku Appau-Nkansah",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^2.3.2",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.5.0",
+    "mongodb": "^3.5.8",
+    "mongoose": "^5.9.18",
+    "mysql2": "^2.1.0",
+    "nodemailer": "^6.4.10",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "nodemon": "^2.0.4",
+    "sequelize": "^5.21.12",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brakwaku/C9forlife-app.git"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "bugs": {
+    "url": "https://github.com/brakwaku/C9forlife-app/issues"
+  },
+  "homepage": "https://github.com/brakwaku/C9forlife-app#readme"
+}
